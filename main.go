@@ -563,10 +563,12 @@ func createDepositDatasCmd() *cobra.Command {
 			var genesisForkVersion common.Version
 			checkErr(genesisForkVersion.UnmarshalText([]byte(forkVersion)), "cannot decode fork version")
 
-			valSeed, err := mnemonicToSeed(validatorsMnemonic)
-			checkErr(err, "bad validator mnemonic")
-			withdrSeed, err := mnemonicToSeed(withdrawalsMnemonic)
-			checkErr(err, "bad withdrawal mnemonic")
+			//valSeed, err := mnemonicToSeed(validatorsMnemonic)
+			valSeed := []byte(validatorsMnemonic)
+			//checkErr(err, "bad validator mnemonic")
+			withdrSeed := []byte(withdrawalsMnemonic)
+			//withdrSeed, err := mnemonicToSeed(withdrawalsMnemonic)
+			//checkErr(err, "bad withdrawal mnemonic")
 
 			if asJsonList {
 				cmd.Println("[")
